@@ -37,6 +37,14 @@
 }
 
 .flaticon-resume:before { content: "\f100"; }
-.flaticon-employee:before { content: "\f101"; }
-.flaticon-collaboration:before { content: "\f102"; }
-.flaticon-promotions:before { content: "\f103"; }
+.flaticon-team:before { content: "\f101"; }
+.flaticon-career:before { content: "\f102"; }
+.flaticon-employees:before { content: "\f103"; }
+.flaticon-contact:before { content: "\f104"; }
+.flaticon-mortarboard:before { content: "\f105"; }
+.flaticon-idea:before { content: "\f106"; }
+.flaticon-accounting:before { content: "\f107"; }
+.flaticon-dish:before { content: "\f108"; }
+.flaticon-stethoscope:before { content: "\f109"; }
+.flaticon-worldwide:before { content: "\f10a"; }
+.flaticon-visitor:before { content: "\f10b"; }

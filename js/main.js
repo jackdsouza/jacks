@@ -76,10 +76,31 @@
 					items: 1
 				},
 				600:{
-					items: 3
+					items: 2
 				},
 				1000:{
 					items: 3
+				}
+			}
+		});
+		$('.carousel-candidates').owlCarousel({
+			autoplay: true,
+			autoHeight: true,
+			items:1,
+			margin: 30,
+			stagePadding: 0,
+			nav: false,
+			dots: true,
+			navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
+			responsive:{
+				0:{
+					items: 1
+				},
+				600:{
+					items: 3
+				},
+				1000:{
+					items: 5
 				}
 			}
 		});
@@ -174,7 +195,7 @@
 
 	var counter = function() {
 		
-		$('#section-counter, .hero-wrap, .ftco-counter').waypoint( function( direction ) {
+		$('#section-counter, .hero-wrap, .ftco-counter, .ftco-volunteer').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
 
@@ -291,14 +312,6 @@
 
     fixedContentPos: false
   });
-
-
-  $('.checkin_date, .checkout_date').datepicker({
-	  'format': 'm/d/yyyy',
-	  'autoclose': true
-	});
-
-
 
 
 })(jQuery);

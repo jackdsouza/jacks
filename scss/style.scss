@@ -1,14 +1,14 @@
 @import 'bootstrap/bootstrap';
 @import 'bootstrap/variables';
 
-$font-primary: 'Nunito Sans',Arial, sans-serif;
+$font-primary: 'Source Sans Pro',Arial, sans-serif;
 
 $white: #fff;
 $black: #000000;
 // $darken: #3a4348;
 
-$primary: #157efb;
-$secondary: #5dd28e;
+$primary: #206dfb;
+$secondary: #fdab44;
 
 
 
@@ -25,6 +25,17 @@ $secondary: #5dd28e;
     -webkit-transition: all $transition ease;
     -ms-transition: 		all $transition ease;
     transition:         all $transition ease;
+}
+
+@mixin gradient-background(){
+	background: rgba(32,125,255,1);
+	background: -moz-linear-gradient(left, rgba(32,125,255,1) 0%, rgba(161,106,232,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(32,125,255,1)), color-stop(100%, rgba(161,106,232,1)));
+	background: -webkit-linear-gradient(left, rgba(32,125,255,1) 0%, rgba(161,106,232,1) 100%);
+	background: -o-linear-gradient(left, rgba(32,125,255,1) 0%, rgba(161,106,232,1) 100%);
+	background: -ms-linear-gradient(left, rgba(32,125,255,1) 0%, rgba(161,106,232,1) 100%);
+	background: linear-gradient(to right, rgba(32,125,255,1) 0%, rgba(161,106,232,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207dff', endColorstr='#a16ae8', GradientType=1 );
 }
 
 html {
@@ -56,7 +67,7 @@ a {
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
 	line-height: 1.5;
-	color: rgba(0,0,0,.8);
+	color: rgba(0,0,0,1);
 	font-weight: 400;
 }
 
@@ -79,6 +90,12 @@ h1, h2, h3, h4, h5,
 
 	.navbar-brand {
 		color: $white;
+		&:hover{
+			color: $black;
+		}
+		@include media-breakpoint-down(md){
+			color: $white;
+		}
 	}
 	
 	.navbar-nav {
@@ -95,13 +112,18 @@ h1, h2, h3, h4, h5,
 				color: $white;
 				font-weight: 400;
 				&:hover {
-					color: $white;
+					color: $secondary;
 				}
 				opacity: 1!important;
 				@include media-breakpoint-down(md){
 					padding-left: 0;
 					padding-right: 0;
-					padding-bottom: 0;
+					padding-top: .5em;
+					padding-bottom: .5em;
+					color: rgba(255,255,255,.7);
+					&:hover{
+						color: $white;
+					}
 				}
 			}
 
@@ -151,6 +173,7 @@ h1, h2, h3, h4, h5,
 						color: $white;
 					}
 					&:hover{
+						color: $white;
 						background: $primary;
 						border: 1px solid $primary;
 					}
@@ -272,18 +295,19 @@ h1, h2, h3, h4, h5,
 }
 
 .navbar-brand {
-	font-weight: 700;
 	font-size: 20px;
+	font-weight: 700;
 }
-
-
 
 
 
 .hero-wrap{
 	width: 100%;
-	height: 100%;
-	position: inherit;
+	height: 800px;
+	position: relative;
+	@include media-breakpoint-down(md){
+		height: 900px;
+	}
 	.overlay{
 		position: absolute;
 		top: 0;
@@ -291,59 +315,98 @@ h1, h2, h3, h4, h5,
 		right: 0;
 		bottom: 0;
 		content: '';
-		opacity: .2;
+		opacity: .8;
 		background: $black;
+		@include gradient-background();
+	}
+	.slider-text {
+		height: 800px;
+		z-index: 0;
+		overflow: hidden;
+		@include media-breakpoint-down(md){
+			text-align: center;
+			height: 900px;
+		}
+		.subheading{
+			color: $black;
+			font-weight: 700;
+			font-size: 16px;
+			letter-spacing: 4px;
+			text-transform: uppercase;
+			display: inline-block;
+			color: $black;
+		}
+		.text{
+			position: relative;
+			z-index: 1;
+		}
+		h1 {
+			font-size: 54px;
+			color: $white;
+			line-height: 1.2;
+			font-weight: 400;
+			span{
+				font-weight: 700;
+				// color: darken($primary,10%);
+			}
+			@include media-breakpoint-down(md) {
+				font-size: 50px;
+			}
+			@include media-breakpoint-down(sm) {
+				font-size: 40px;
+			}
+		}
+		p {
+			color: rgba(255,255,255,.8);
+			font-weight: 400;
+			.number{
+				color: $secondary;
+			}
+		}
+		.btn-custom{
+			color: $white;
+			background: $primary;
+			padding: 10px 20px;
+		}
+	}
+	&.hero-wrap-2{
+		height: 400px !important;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: top center;
+		@include media-breakpoint-down(lg){
+			background-position: top center !important;
+		}
+		.slider-text{
+			height: 400px !important;
+			@include media-breakpoint-down(md){
+				text-align: center;
+				height: 400px !important;
+			}
+		}
 	}
 }
 
 .slider-text{
-	color: $white;
-	h1 {
-		font-size: 70px;
-		color: $white;
-		line-height: 1;
-		font-weight: 800;
-		@include media-breakpoint-down(md) {
-			font-size: 40px;
-		}
-		span{
-			font-weight: 300;
-		}
-	}
-	p {
-		font-size: 20px;
-		line-height: 1.5;
-		font-weight: 300;
-		color: rgba(255,255,255,.8);
-		strong{
-			font-weight: 700;
-			a{
-				color: $black;
-			}
-		}
-	}
 	.breadcrumbs{
-		font-size: 18px;
+		font-size: 12px;
 		letter-spacing: 1px;
 		margin-bottom: 20px;
 		z-index: 99;
+		text-transform: uppercase;
+		font-weight: 500 !important;
+		letter-spacing: 2px;
 		span{
-			color: rgba(255,255,255,.7);
+			color: rgba(255,255,255,.9);
 			a{
 				color: $white;
 			}
 		}
 	}
 	.bread{
-		font-weight: 400 !important;
-	}
-	.btn-primary{
-		border: 1px solid rgba(255,255,255,.4);
-		@include border-radius(30px);
-		&:hover, &:focus{
-			background: $white !important;
-			color: $black;
-		}
+		font-size: 50px !important;
+		font-weight: 700;
+		color: $white !important;
 	}
 }
 
@@ -478,6 +541,16 @@ h1, h2, h3, h4, h5,
 			}
 		}
 	}
+	&.btn-secondary {
+		border: 1px solid $secondary !important;
+		color: $white !important;
+		background: $secondary !important;
+		&:hover {
+			border: 1px solid $primary;
+			background: transparent;
+			color :$primary;
+		}
+	}
 	&.btn-outline-white {
 		border-color: rgba($white, .8);
 		background: none;
@@ -492,21 +565,86 @@ h1, h2, h3, h4, h5,
 	}
 }
 
+
+//TOP JOB CATEGORY
+.category-wrap{
+	background: $white;
+	@include media-breakpoint-up(lg){
+		margin-top: -70px;
+		-webkit-box-shadow: 0px 3px 14px -4px rgba(0,0,0,0.1);
+		-moz-box-shadow: 0px 3px 14px -4px rgba(0,0,0,0.1);
+		box-shadow: 0px 3px 14px -4px rgba(0,0,0,0.1);
+	}
+}
+.top-category{
+	padding: 20px;
+	background: $white;
+	border-left: 1px solid rgba(0,0,0,.08);
+	@include transition(.3s);
+	&.no-border-left{
+		border-left: none;
+	}
+	h3{
+		font-size: 20px;
+		a{
+			color: $black;
+		}
+	}
+	.icon{
+		font-size: 40px;
+		color: $primary;
+	}
+	p{
+		color: rgba(0,0,0,.7);
+	}
+	&.active,&:hover{
+		background: $secondary;
+		border-left: none;
+		h3{
+			a{
+				color: $white;
+			}
+		}
+		.icon{
+			color: $white;
+		}
+		p{
+			color: rgba(255,255,255,.9);
+		}
+	}
+	&:hover{
+		background: $primary;
+	}
+}
+
 //JOB CATEGORY
 .category{
 	padding: 0;
 	li{
 		list-style: none;
-		margin-bottom: 20px;
-		font-size: 18px;
+		margin-bottom: 0px;
+		font-size: 22px;
 		font-weight: 400;
 		a{
 			display: block;
 			color: lighten($black,10%);
 			// border: 1px solid lighten($black,92%);
-			border: 1px solid lighten($secondary,30%);
-			padding: 5px 10px;
-			@include border-radius(5px);
+			border-bottom: 1px solid lighten($secondary,30%);
+			padding: 10px 15px 10px 0;
+			position: relative;
+			i{
+				position: absolute;
+				top: 50%;
+				right: 30px;
+				transform: translateY(-50%);
+				color: $secondary;
+				opacity: 0;
+				@include transition(.3s);
+			}
+			span{
+				color: rgba(0,0,0,.3);
+				font-size: 15px;
+			}
 			span.number{
 				font-size: 16px;
 				// color: lighten($black,70%);
@@ -517,8 +655,18 @@ h1, h2, h3, h4, h5,
 				@include border-radius(5px);
 			}
 			&:hover, &:focus{
-				color: $secondary;
-				background: lighten($secondary,38%);
+				color: $primary;
+				background: lighten($secondary,30%);
+				i{
+					right: 15px;
+					opacity: 1;
+				}
+				span{
+					color: rgba(0,0,0,.8)
+				}
+				.number{
+					color: $secondary;
+				}
 			}
 		}
 	}
@@ -526,24 +674,270 @@ h1, h2, h3, h4, h5,
 
 
 .job-post-item{
-	margin-bottom: 10px;
+	// border: 1px solid lighten($black,94%);
+	z-index: 0;
+	background: $white;
+	position: relative;
+	width: 100%;
+	margin-bottom: 20px;
 	@include transition(.3s);
-	.badge{
-		@include border-radius(30px);
+	h2{
+		font-size: 28px;
+		a{
+			color: $black;
+		}
 	}
-	&:hover, &:focus{
-		-webkit-box-shadow: 0px 7px 15px -5px rgba(0,0,0,0.07);
-		-moz-box-shadow: 0px 7px 15px -5px rgba(0,0,0,0.07);
-		box-shadow: 0px 7px 15px -5px rgba(0,0,0,0.07);
+	.one-third{
+		width: calc(100% - 145px);
+		@include media-breakpoint-down(md){
+			width: 100%;
+		}
+		.subadge{
+			color: rgba(0,0,0,.3);
+			color: $primary;
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: 14px;
+		}
+	}
+	.one-forth{
+		width: 145px;
+		@include media-breakpoint-down(md){
+			width: 100%;
+		}
+		> div{
+			.icon{
+				width: 40px;
+				height: 40px;
+				@include border-radius(50%);
+			}
+		}
 	}
 	.icon{
-		border: 1px solid lighten($black,85%);
-		background: lighten($black,100%);
+		border: none !important;
+		background: lighten($secondary,30%) !important;
+		@include media-breakpoint-up(lg){
+			opacity: 0;
+		}
+		@include transition(.3s);
 		span{
-			color: lighten($black,85%);
+			color: $secondary;
+		}
+	}
+	.job-post-item-body{
+		span, a{
+			text-transform: uppercase;
+			font-size: 14px;
+			font-weight: 500;
+			color: rgba(0,0,0,.7);
+		}
+	}
+	&:hover, &:focus{
+		-webkit-box-shadow: 0px 0px 24px 5px rgba(0,0,0,0.1);
+		-moz-box-shadow: 0px 0px 24px 5px rgba(0,0,0,0.1);
+		box-shadow: 0px 0px 24px 5px rgba(0,0,0,0.1);
+		border: none;
+		.icon{
+			background: $secondary !important;
+			opacity: 1;
+			span{
+				color: $white;
+			}
 		}
 	}
 }
+
+
+//CANDIDATES
+.team{
+	width: 100%;
+	display: block;
+	@include transition(.3s);
+	@include media-breakpoint-down(md){
+		margin-bottom: 30px;
+	}
+	&.team-2{
+		h2{
+			font-size: 24px !important;
+		}
+	}
+	.img{
+		width: 180px;
+		height: 180px;
+		margin: 0 auto;
+		margin-bottom: 20px;
+		position: relative;
+		overflow: hidden;
+		@include border-radius(50%);
+	}
+	h2{
+		font-size: 20px;
+		font-weight: 500;
+		margin-bottom: 0px;
+		color: $white;
+	}
+	.position{
+		font-size: 14px;
+		text-transform: uppercase;
+		font-weight: 600;
+		color: rgba(255,255,255,.7);
+	}
+}
+.ftco-candidates{
+	position: relative;
+	.owl-carousel{
+		margin: 0;
+	}
+	.owl-carousel .owl-stage-outer{
+		padding-top: 1em;
+		padding-bottom: 2em;
+		position: relative;
+	}
+	.owl-nav {
+		position: absolute;
+		bottom: 60px !important;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		@include media-breakpoint-down(md){
+			display: none;
+		}
+		.owl-prev,
+		.owl-next {
+			position: absolute;
+			width: 60px;
+			height: 60px;
+			background: $white !important;
+			@include transition(.7s);
+			span {
+				&:before {
+					font-size: 20px;
+					margin-top: 7px;
+					color: $black;
+				}
+			}
+			opacity: 1;
+		}
+		.owl-prev {
+			top: 0 !important;
+			right: 0 !important;
+			@include media-breakpoint-up(lg){
+				right: 61px !important;
+			}
+			&:hover, &:focus{
+				background: $black !important;
+				outline: none !important;
+				span {
+					&:before {
+						font-size: 20px;
+						margin-top: 7px;
+						color: $white;
+					}
+				}
+			}
+		}
+		.owl-next {
+			top: 0 !important;
+			right: 0 !important;
+			@include media-breakpoint-up(lg){
+				right: 0 !important;
+			}
+			&:hover, &:focus{
+				background: $black !important;
+				outline: none !important;
+				span {
+					&:before {
+						font-size: 24px;
+						margin-top: 7px;
+						color: $white;
+					}
+				}
+			}
+		}
+	}
+	.owl-dots {
+		text-align: center;
+		.owl-dot {
+			width: 12px;
+			height: 12px;
+			margin: 5px;
+			border-radius: 50%;
+			background: $white !important;
+			border: 1px solid $primary;
+			&.active {
+				background: $secondary !important;
+				&:after{
+					position: absolute;
+					top: -2px;
+					left: -2px;
+					right: 0;
+					bottom: 0;
+					width: 14px;
+					height: 14px;
+					content: '';
+					border:1px solid $secondary;
+					@include border-radius(50%);
+				}	
+			}
+		}
+	}
+}
+
+
+.ftco-candidates-2{
+	.team{
+		.img{
+			width: 180px;
+			height: 180px;
+			margin: 0 0 30px 0;
+			@include media-breakpoint-down(sm){
+				margin: 0 auto;
+				margin-bottom: 10px;
+			}
+		}
+		margin-bottom: 30px;
+	}
+	.text{
+		width: calc(100% - 180px);
+		@include media-breakpoint-down(sm){
+			width: 100%;
+			text-align: center;
+		}
+	}
+	h2{
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 0px;
+		color: $black;
+	}
+	.location{
+		font-size: 14px;
+		font-weight: 500;
+		color: rgba(0,0,0,.3);
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+	.position{
+		font-size: 14px;
+		font-weight: 500;
+		color: rgba(0,0,0,.3);
+		color: $secondary;
+		display: inline-block;
+		margin-bottom: 10px;
+		text-transform: capitalize;
+		padding: 0 10px;
+		background: lighten($secondary,35%);
+		@include border-radius(5px);
+	}
+	.seen{
+		font-size: 14px;
+		font-weight: 500;
+		color: rgba(0,0,0,.2);
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+}
+
 
 .ftco-search{
 	position: relative;
@@ -552,6 +946,7 @@ h1, h2, h3, h4, h5,
 	.nav-link-wrap{
 	}
 	.nav-pills{
+		display: inline-block;
 		p{
 			margin-bottom: 0;
 		}
@@ -565,16 +960,15 @@ h1, h2, h3, h4, h5,
 			position: relative;
 			display: inline-block;
 			border: 1px solid transparent;
-			background: $primary;
+			background: $secondary;
+			margin: 0 auto;
 			@include border-radius(5px);
-			@include media-breakpoint-down(md){
-				color: rgba(255,255,255,.7);
-			}
 			&.active, &:hover{
-				color: rgba(0,0,0,.7);
+				color: $black;
 				@include transition(.3s);
 				border: 1px solid transparent;
 				background: rgba(255,255,255,1);
+				background: $white;
 				&:after{
 					opacity: 1;
 				}
@@ -585,7 +979,7 @@ h1, h2, h3, h4, h5,
 				}
 			}
 			@include media-breakpoint-down(sm){
-				display: block;
+				// display: block;
 				// width: 100%;
 				margin-bottom: 5px;
 			}
@@ -618,9 +1012,9 @@ h1, h2, h3, h4, h5,
 			display: block;
 			width: 100%;
 			font-size: 14px;
-			border: 1px solid lighten($black,85%);
+			border: 1px solid rgba(0,0,0,.1);
 			color: rgba(0,0,0,.7) !important;
-			background: transparent !important;
+			background: rgba(255,255,255,1) !important;
 			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 			  color: rgba(0,0,0,.7) !important;
 			}
@@ -666,21 +1060,18 @@ h1, h2, h3, h4, h5,
 
 
 //ABOUT
-.ftco-about{
-	.one-half{
-		width: 100%;
-		padding: 30px 15px;
-		@include media-breakpoint-up(md){
-			padding: 5% 13% 5% 5%;
-			width: 50%;
-		}
-		&.img{
-			display: block;
-			@include media-breakpoint-down(sm){
-				height: 300px;
-			}
-		}
+.intro{
+	h2{
+		font-weight: 700;
 	}
+	img{
+		margin: 0 auto;
+	}
+}
+
+
+.services-section{
+	@include gradient-background();
 }
 
 //SERVICES
@@ -691,13 +1082,15 @@ h1, h2, h3, h4, h5,
 		position: relative;
 		span{
 			font-size:60px;
-			color: $primary;
+			color: $white;
 		}
 	}
 	.media-body{
+		color: rgba(255,255,255,.7);
 		h3{
 			font-size: 18px;
-			font-weight: 500;
+			font-weight: 700;
+			color: $white;
 		}
 	}
 }
@@ -823,11 +1216,18 @@ textarea.form-control {
 
 
 .ftco-section {
-	padding: 7em 0;
+	padding: 6em 0;
 	position: relative;
 	@include media-breakpoint-down(sm){
 		padding: 6em 0;
 	}
+}
+
+.ftco-no-pt{
+	padding-top: 0 !important;
+}
+.ftco-no-pb{
+	padding-bottom: 0 !important;
 }
 
 .ftco-bg-dark {
@@ -837,8 +1237,9 @@ textarea.form-control {
 
 .ftco-footer {
 	font-size: 16px;
-	background: #222831;
-	padding: 7em 0;
+	background: $white;
+	padding: 6em 0;
+	color: rgba(0,0,0,.5);
 	.ftco-footer-logo {
 		text-transform: uppercase;
 		letter-spacing: .1em;
@@ -846,17 +1247,17 @@ textarea.form-control {
 	.ftco-footer-widget {
 		h2 {
 			font-weight: normal;
-			color: $white;
-			margin-bottom: 40px;
-			font-size: 20px;
+			color: rgba(0,0,0,.7);
+			margin-bottom: 20px;
+			font-size: 18px;
 			font-weight: 400;
 		}
 		ul{
 			li{
 				a{
-					color: rgba(255,255,255,.4);
+					color: rgba(0,0,0,.4);
 					span{
-						color: $white;
+						color: rgba(0,0,0, .5);
 					}
 				}
 			}
@@ -871,18 +1272,13 @@ textarea.form-control {
 		}
 	}
 	p {
-		color: rgba($white, .7);
+		color: rgba(0,0,0, .5);
 	}
 	a {
-		color: rgba($white, .7);
+		color: rgba(0,0,0, .5);
 		&:hover {
-			color: $white;
+			color: $primary;
 		}
-	}
-	.ftco-heading-2 {
-		font-size: 17px;
-		font-weight: 400;
-		color: $black;
 	}
 }
 
@@ -893,19 +1289,20 @@ textarea.form-control {
 		margin: 0 10px 0 0;
 		display: inline-block;
 		a {
-			height: 50px;
-			width: 50px;
+			height: 40px;
+			width: 40px;
 			display: block;
-			float: left;
-			background: rgba($white, .05);
+			background: rgba(0,0,0,.05);
 			border-radius: 50%;
 			position: relative;
+			color: $primary;
 			span {
 				position: absolute;
-				font-size: 26px;
+				font-size: 20px;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
+				color: $primary !important;
 			}
 			&:hover {
 				color: $white;
@@ -975,7 +1372,7 @@ textarea.form-control {
 #map {
 	// height: 400px;
 	width: 100%;
-	@include media-breakpoint-down(md) {
+	@include media-breakpoint-down(sm) {
 		height: 300px;
 	}
 }
@@ -1009,16 +1406,17 @@ textarea.form-control {
 
 .heading-section{
 	.subheading{
-		font-size: 18px;
+		font-size: 12px;
 		display: block;
-		margin-bottom: 10px;
+		margin-bottom: 0px;
+		color: $primary;
+		font-weight: 600;
+		letter-spacing: 2px;
+		text-transform: uppercase;
 	}
 	h2{
-		font-size: 40px;
-		font-weight: 700;
-		span{
-			font-weight: 400;
-		}
+		font-size: 38px;
+		font-weight: 500;
 		@include media-breakpoint-down(sm){
 			font-size: 28px;
 		}
@@ -1028,7 +1426,6 @@ textarea.form-control {
 			color: rgba(255,255,255,.9);
 		}
 		h2{
-			font-size: 40px;
 			color: $white;
 		}
 		p{
@@ -1038,7 +1435,6 @@ textarea.form-control {
 }
 
 //COVER BG
-.hero-wrap,
 .img,
 .blog-img,
 .user-img{
@@ -1058,8 +1454,7 @@ textarea.form-control {
 		margin: 0;
 	}
 	.owl-carousel .owl-stage-outer{
-		padding-top: 3.5em;
-		padding-bottom: 2em;
+		padding: 1em 0 1em 0;
 		position: relative;
 	}
 	.owl-nav {
@@ -1123,7 +1518,7 @@ textarea.form-control {
 			border-radius: 50%;
 			background: rgba(0,0,0,.1);
 			&.active {
-				background: $secondary;
+				background: $primary;
 			}
 		}
 	}
@@ -1131,36 +1526,30 @@ textarea.form-control {
 .testimony-wrap{
 	display: block;
 	position: relative;
-	background: rgba(255,255,255,.1);
+	background: rgba(255,255,255,1);
+	padding: 0 20px;
+	border: 1px solid rgba(0,0,0,.02);
+	-webkit-box-shadow: 0px 5px 21px -14px rgba(0,0,0,0.14);
+	-moz-box-shadow: 0px 5px 21px -14px rgba(0,0,0,0.14);
+	box-shadow: 0px 5px 21px -14px rgba(0,0,0,0.14);
+	@include border-radius(5px);
 	.user-img{
-		width: 100px;
-		height: 100px;
-		border-radius: (50%);
+		width: 80px;
+		height: 80px;
 		position: relative;
-		margin-top: -75px;
-		.quote{
-			position: absolute;
-			bottom: -10px;
-			right: 0;
-			width: 40px;
-			height: 40px;
-			background: $white;
-			@include border-radius(50%);
-			i{
-				color: lighten($black,60%);
-			}
-		}
+		// margin: 0 auto;
+		@include border-radius(50%);
+		// margin-top: -75px;
 	}
 	.name{
-		font-weight: 400;
-		font-size: 18px;
+		font-weight: 500;
+		font-size: 20px;
 		margin-bottom: 0;
 		color: $black;
 	}
 	.position{
 		font-size: 16px;
 		color: lighten($black,80%);
-		text-transform: uppercase;
 	}
 }
 
@@ -1214,24 +1603,31 @@ textarea.form-control {
 		right: 0;
 		content: '';
 		z-index: -1;
-		opacity: .5;
-		background: $black;
+		opacity: .9;
+		background: $primary;
 	}
 }
 .ftco-counter {
-	padding: 6em 0;
+	padding: 8em 0;
 	@include media-breakpoint-down(lg){
 		background-position: center center !important;
 	}
 	.icon{
+		margin-bottom: 10px;
 		span{
+			line-height: 1;
+			font-size: 40px;
+			color: $white;
 		}
 	}
 	.text{
+		.desc{
+		}
 		strong.number{
 			font-weight: 600;
 			font-size: 34px;
 			color: $white;
+			line-height: 1;
 		}
 		span{
 			font-size: 18px;
@@ -1243,17 +1639,17 @@ textarea.form-control {
 			margin-bottom: 20px;
 		}
 	}
-	.ftco-number {
-		display: block;
-		font-size: 72px;
-		font-weight: bold;
-		color: $primary;
-	}
-	.ftco-label {
-		font-size: 12px;
-		text-transform: uppercase;
-		letter-spacing: .1em;
-	}
+	// .ftco-number {
+	// 	display: block;
+	// 	font-size: 72px;
+	// 	font-weight: bold;
+	// 	color: $primary;
+	// }
+	// .ftco-label {
+	// 	font-size: 12px;
+	// 	text-transform: uppercase;
+	// 	letter-spacing: .1em;
+	// }
 }
 
 //blocks 
@@ -1325,7 +1721,7 @@ textarea.form-control {
 				margin-bottom: 15px;
 			}
 			span{
-				color: rgba($white, .7);
+				color: rgba(0,0,0,.5);
 			}
 			.icon, .text {
 				display: table-cell;
@@ -1335,7 +1731,13 @@ textarea.form-control {
 				width: 40px;
 				font-size: 18px;
 				padding-top: 2px;
-				color: rgba($white, 1);
+				color: rgba(0,0,0,.5);
+			}
+			a{
+				color: rgba(0,0,0,.5);
+				.icon{
+					color: rgba(0,0,0,.5) !important;
+				}
 			}
 			
 		}
@@ -1343,7 +1745,6 @@ textarea.form-control {
 }
 
 .block-6 {
-	margin-bottom: 40px;
 	.icon {
 		span {
 			&:before {
@@ -1366,7 +1767,8 @@ textarea.form-control {
 	}
 	.icon {
 		> span {
-			font-size: 40px;
+			font-size: 60px;
+			color: $white;
 		}
 	}
 	.text {
@@ -1389,18 +1791,18 @@ textarea.form-control {
 			margin-bottom: 4px;
 			font-weight: 400;
 			a,span {
-				color: $secondary;
+				color: $primary;
 				text-align: center;
 				display: inline-block;
 				width: 40px;
 				height: 40px;
 				line-height: 40px;
 				border-radius: 50%;
-				border: 1px solid lighten($black,80%);
+				border: 1px solid lighten($primary,30%);
 			}
 			&.active {
 				a, span {
-					background: $secondary;
+					background: $primary;
 					color: $white;
 					border: 1px solid transparent;
 				}
@@ -1562,14 +1964,13 @@ textarea.form-control {
 }
 
 .search-form {
-	background: lighten($black, 95%);
-	padding: 10px;
-
 	.form-group {
 		position: relative;
 		input {
 			padding-right: 50px;
 			font-size: 14px;
+			background: rgba(0,0,0,.02) !important;
+			height: 48px !important;
 		}
 	}
 	.icon {
@@ -1625,6 +2026,14 @@ textarea.form-control {
 
 
 //SIDEBAR SEARCH
+.sidebar{
+	.heading-section{
+		h2{
+			font-size: 24px;
+			font-weight: 500;
+		}
+	}
+}
 .sidebar-wrap{
 	margin-bottom: 60px;
 	.heading{
@@ -1691,23 +2100,65 @@ textarea.form-control {
 		}
 	}
 }
+
+//BROWSE FORM
+.browse-form{
+	label{
+		input{
+			margin-right: 7px;
+		}
+	}
+}
+
 // sidebar
+.sidebar-box{
+	.heading-sidebar{
+		font-size: 19px;
+	}
+	.border{
+		border: 1px solid rgba(0,0,0,.08) !important;
+	}
+	.company-wrap{
+		display: block;
+	}
+	.text{
+		h3{
+			font-size: 20px;
+			font-weight: 500;
+			margin-bottom: 0;
+			a{
+				color: $black;
+			}
+		}
+		p{
+			.number{
+				font-size: 16px;
+				background: lighten($secondary,20%);
+				color: $white;
+				padding: 2px 5px;
+				@include border-radius(5px);
+			}
+		}
+	}
+}
 
 .sidebar-box {
 	margin-bottom: 30px;
-	padding: 25px;
 	font-size: 15px;
 	width: 100%;
-	
-	float: left;
-	
-	background: $white;
+
 	*:last-child {
 		margin-bottom: 0;
 	}
-	h3 {
-		font-size: 18px;
+	h3.heading-2 {
+		font-size: 24px;
+		font-weight: 700;
 		margin-bottom: 15px;
+	}
+	h3.heading-3 {
+		font-size: 24px;
+		font-weight: 500;
+		margin-bottom: 20px;
 	}
 }
 
