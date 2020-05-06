@@ -1,0 +1,62 @@
+.main
+{
+  font-family: sans-serif;
+	background: #FFFFFF;
+  color: #000000;
+  border: 2px solid black;
+  border-radius: 5px;
+
+}
+.head
+{
+  margin: 20px;
+  line-height:10px;
+}
+header a
+{
+  color: #000000;
+  text-decoration: none;
+}
+img
+{
+  vertical-align: middle;
+}
+nav a
+{
+	color: #000000;
+}
+footer a
+{
+	color: #000000;
+}
+body
+{
+  margin: 50px;
+}
+
+footer
+{
+	background: #D3D3D3;
+  color: #000000;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+hr
+{
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.left
+{
+  float: right;
+  padding: 10px 10px 10px 10px;
+}
+section
+{
+  margin: 20px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align:center;
+}
