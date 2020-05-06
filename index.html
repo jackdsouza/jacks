@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SOHAM</title>
+		<link rel="icon" type="image/ico" href="img/icon.png" />
+    <link rel="stylesheet" href="css/homestyle.css">
+</head>
+<body>
+
+
+<div class="main">
+  <nav>
+    <ul>
+      <b><li><a href="/new/catalogue.php">&nbsp;Menu&nbsp;</a></li>
+      <li><a href="/new/cart.php">&nbsp;Cart&nbsp;</a></li>
+      <li><a href="/new/menu.php">&nbsp;Order&nbsp;</a></li>
+      <li><a href="#">&nbsp;Home&nbsp;</a></li></b>
+      <a href="#"><img src="a.png" width="60px"height="60px" alt="not available"></a>
+    </ul>
+  </nav>
+
+  <header class="head" >
+  <h1 style="font-family:Brush Script MT;font-size:70px;word-spacing: 20px;">HI <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b> <br /> WELCOME TO THE NOODLE BAR</h1>
+  <h6 style="font-family:Bimbo;">EAT. SLEEP. REPEAT.</h6>
+  </header>
+
+    <button onclick="window.location.href = 'reset-password.php';" class="btn">Reset Your Password</button>
+    <button onclick="window.location.href = 'logout.php';" class="btn">Sign Out of Your Account</button>
+
+
+    <section class="sec">
+    <p class="p1" style="float:left;margin-left:60px;"><img src="images/1a.jpg" width="100%" height="100%"></p>
+    <p class="p2" style="float:right;margin-right:60px"><img src="images/2a.jpg" width="100%" height="100%"></p>
+    <p class="p3" style="float:left;margin-left:60px"><img src="images/3a.jpg" width="100%" height="100%"></p>
+    <p class="p4" style="float:right;margin-right:60px"><img src="images/4a.jpg" width="100%" height="100%"></p>
+
+
+    </section>
+
+    <footer  class="foot">
+
+      <div class="foot1">
+      <b><br />CONTACT US @ +91 7003136690&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADDRESS: KOLKATA , INDIA - 700053<br />
+      <br />
+      <br />DESIGNED AND CREATED BY<br />
+      <br />
+        <br />↠↠ SOHAM CHAKRABORTY (33200116013)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↠↠ SHABDIKA PAL (33200116017)<br />
+        <br />↠↠ SAYANTAN GUHA (33200116018)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↠↠ MONOJIT BAG (33200116039)<br />
+        <br />↠↠ MANASHI SAMANTA (33200116041)<br />
+        <br />
+      <br />&nbsp;&nbsp;&nbsp;Copyright &copy; THE NOODLE BAR 2020&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a href="/new/privacy.php">Privacy Policy</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;contact@thenoodlebar.com&nbsp;&nbsp;&nbsp;<br />
+      <br /></b>
+      </div>
+    </footer>
+</div>
+</body>
+</html>
