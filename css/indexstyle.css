@@ -1,8 +1,13 @@
-.main
+html
 {
   font-family: sans-serif;
-	background: #FFFFFF;
+  background: #FFFFFF;
   color: #000000;
+  font-size:20px
+}
+
+.main
+{
   border: 2px solid black;
   border-radius: 5px;
 
@@ -21,25 +26,9 @@ img
 {
   vertical-align: middle;
 }
-nav a
-{
-	color: #000000;
-}
-footer a
-{
-	color: #000000;
-}
 body
 {
   margin: 50px;
-}
-
-footer
-{
-	background: #D3D3D3;
-  color: #000000;
-  border: 2px solid black;
-  border-radius: 5px;
 }
 hr
 {
@@ -55,8 +44,16 @@ section
 {
   margin: 20px;
 }
-table, th, td {
+.body table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   text-align:center;
+}
+.foot h4
+{
+  text-align:right;
+}
+.foot b
+{
+  text-align:left;
 }
