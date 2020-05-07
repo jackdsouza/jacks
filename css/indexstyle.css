@@ -44,18 +44,18 @@ section
 {
   margin: 20px;
 }
-.body table, th, td {
+table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   text-align:center;
 }
 .foot h4
 {
-  
+  font-size:20px;
   text-align:right;
 }
 .foot b
 {
-
+  font-size:20px;
   text-align:left;
 }
